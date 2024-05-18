@@ -19,6 +19,7 @@ def execute_alert_script():
         'log_back_door_right_state.csv',
         'log_back_garage_door_state.csv',
         'log_front_door.csv',
+        'log_back_door_left_state.csv',
         'log_main_garage_door.csv',
         'log_motion_front_door.csv',
         'log_motion_inside_garage.csv',
@@ -33,7 +34,7 @@ def execute_alert_script():
             df = pd.read_csv(csv_file)
             
             # Check if the last record's 'State' column has a value of 0
-            if df.iloc[-1]['State'] == 0:
+            if df.iloc[-1]['State'] == 1:
                 # Prepare the payload and headers for the POST request
                 payload = {
                     "content": "Hey guys ... There is a door Open"
