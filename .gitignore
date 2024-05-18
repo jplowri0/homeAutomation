@@ -1,6 +1,6 @@
 log_back_door_right_state.csv
 log_side_door_state.csv
-log_back_door_right_state.csv
+log_back_door_left_state.csv
 log_back_garage_door_state.csv
 log_front_door.csv
 log_main_garage_door.csv
