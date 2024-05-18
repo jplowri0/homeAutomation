@@ -13,7 +13,7 @@ DOOR_STATE=0
 # Check if the CSV file exists and is not empty
 if [ ! -s "$CSV_FILE" ]; then
 	# If the file does not exist or is empty, write the header
-	echo "Date,Time,Door State" >"$CSV_FILE"
+	echo "Date,Time,State" >"$CSV_FILE"
 fi
 
 # Append the current date, time, and door state to the CSV file

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the file path
-CSV_FILE="log_back_door_right_state.csv"
+CSV_FILE="log_front_door.csv"
 
 # Get the current date and time
 CURRENT_DATE=$(date '+%Y-%m-%d')
