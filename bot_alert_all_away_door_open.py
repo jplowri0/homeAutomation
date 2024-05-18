@@ -7,7 +7,7 @@ def check_switch_bot_state():
     try:
         switch_bot_df = pd.read_csv('switch_bot_alert_all_away_doors_state.csv')
         # Assuming the state column is the last column in the DataFrame
-        if switch_bot_df.iloc[-1]['state'] == 1:
+        if switch_bot_df.iloc[-1]['State'] == 1:
             execute_alert_script()
     except Exception as e:
         print(f"An error occurred while checking the switch bot state: {e}")
@@ -21,8 +21,6 @@ def execute_alert_script():
         'log_front_door.csv',
         'log_back_door_left_state.csv',
         'log_main_garage_door.csv',
-        'log_motion_front_door.csv',
-        'log_motion_inside_garage.csv',
         'log_side_door_state.csv'
         # Add more file paths as needed
     ]
