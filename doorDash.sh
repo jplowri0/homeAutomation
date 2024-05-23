@@ -3,8 +3,12 @@
 # List of door files
 declare -A DOOR_FILES=(
 	["Front door"]="log_front_door.csv"
-	["Back door"]="log_back_door.csv"
-	["Garage door"]="log_garage_door.csv"
+	["RB door"]="log_back_door_right_state.csv"
+	["LB door"]="log_back_door_left_state.csv"
+	["Side door"]="log_side_door_state.csv"
+	["Front door"]="log_front_door.csv"
+	["B Garage door"]="log_back_garage_door_state.csv"
+	["F Garage door"]="log_main_garage_door.csv"
 )
 
 # ANSI escape code for yellow
@@ -28,24 +32,24 @@ print_state() {
 
 	if [ "$state" -eq 1 ]; then
 		if [ "$date" = "CHECK" ]; then
-			echo -e "\t| $door\t| ${GREEN}Open${RESET_COLOR}\t| ${YELLOW}CHECK${RESET_COLOR}\t|"
+			echo -e "\t| $door\t| ${GREEN}Open${RESET_COLOR}   | ${YELLOW}CHECK${RESET_COLOR}\t|"
 		else
-			echo -e "\t| $door\t| ${GREEN}Open${RESET_COLOR}\t| $date\t|"
+			echo -e "\t| $door\t| ${GREEN}Open${RESET_COLOR}   | $date\t|"
 		fi
 	else
 		if [ "$date" = "CHECK" ]; then
-			echo -e "\t| $door\t| ${RED}Closed${RESET_COLOR}\t| ${YELLOW}CHECK${RESET_COLOR}\t|"
+			echo -e "\t| $door\t| ${RED}Closed${RESET_COLOR} | ${YELLOW}CHECK${RESET_COLOR}\t|"
 		else
-			echo -e "\t| $door\t| ${RED}Closed${RESET_COLOR}\t| $date\t|"
+			echo -e "\t| $door\t| ${RED}Closed${RESET_COLOR} | $date\t|"
 		fi
 	fi
 }
 
 # Function to print table header
 print_header() {
-	echo -e "\t+-----------------+--------+-------------------+"
-	echo -e "\t| Door            | State  | Last Open         |"
-	echo -e "\t+-----------------+--------+-------------------+"
+	echo -e "\t+---------------+--------+--------------+"
+	echo -e "\t| Door          | State  | Last Open    |"
+	echo -e "\t+---------------+--------+--------------+"
 }
 
 # Function to get last open date from the file
@@ -78,7 +82,7 @@ while true; do
 		FILE="${DOOR_FILES[$DOOR_NAME]}"
 
 		if [ ! -f "$FILE" ]; then
-			echo -e "\t| $DOOR_NAME\t| ${RED}Error${RESET_COLOR}\t| File not found  |"
+			echo -e "\t| $DOOR_NAME\t\t| ${RED}Error${RESET_COLOR}\t| File not found  |"
 			continue
 		fi
 
@@ -109,7 +113,7 @@ while true; do
 		fi
 	done
 
-	echo -e "\t+-----------------+--------+-------------------+"
+	echo -e "\t+---------------+--------+--------------+"
 
 	# Wait for 10 seconds before checking again
 	sleep 10
