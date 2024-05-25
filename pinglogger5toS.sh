@@ -3,14 +3,25 @@
 #
 # Next I want to log the ms with Date and Time, then append to a csv file every minute.
 
+# Define the colours
+# ANSI escape code for yellow
+YELLOW="\033[0;33m"
+# ANSI escape code for green
+GREEN="\033[0;32m"
+# ANSI escape code for red
+RED="\033[0;31m"
+# ANSI escape code to reset color
+RESET_COLOR="\033[0m"
+
+# Infinite Loop
 while true; do
-	HOST="192.168.1.246"
+	HOST="19.168.1.246"
 	# Checking if the host is down or not.
 	PING=$(ping -c 1 "$HOST" | awk '/100%/ { print $8 }')
-
+	# Now if a host is down it will contin 100% string.
 	if [ "$PING" = "loss," ]; then
 		clear
-		echo "[Host DOWN]"
+		echo -e "[${RED}X${RESET_COLOR}] Synology ${RED}DOWN${RESET_COLOR}"
 	else
 		CSV_FILE="log_latency_5toSyn.csv"
 
@@ -31,7 +42,7 @@ while true; do
 		# Append the current date, time, and door state to the CSV file
 		echo "$CURRENT_DATE,$CURRENT_TIME,$LATENCY" >>"$CSV_FILE"
 		clear
-		echo "[Host UP]"
+		echo -e "[${GREEN}^${RESET_COLOR}] Synology ${GREEN}UP${RESET_COLOR}"
 	fi
 	sleep 120
 done
