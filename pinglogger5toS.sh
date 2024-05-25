@@ -3,10 +3,10 @@
 #
 # Next I want to log the ms with Date and Time, then append to a csv file every minute.
 
-HOST="192.168.1.246"
-echo "$HOST"
+HOST="19.168.1.246"
 # Checking if the host is down or not.
-PING=$(ping -c 1 "$HOST" | awk '/loss/ { print $8 }')
+PING=$(ping -c 1 "$HOST" | awk '/100%/ { print $8 }')
+
 if [ "$PING" = "loss," ]; then
 	echo "[Host DOWN]"
 else
