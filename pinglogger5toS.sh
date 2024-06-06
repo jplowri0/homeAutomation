@@ -15,7 +15,7 @@ RESET_COLOR="\033[0m"
 
 # Infinite Loop
 while true; do
-	HOST="19.168.1.246"
+	HOST="192.168.1.246"
 	# Checking if the host is down or not.
 	PING=$(ping -c 1 "$HOST" | awk '/100%/ { print $8 }')
 	# Now if a host is down it will contin 100% string.
