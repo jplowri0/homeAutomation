@@ -9,4 +9,5 @@ log_motion_inside_garage.csv
 log_latency_5toSyn.csv
 venvHomeAutomation
 pingDash.sh
-log_speedtest
+log_speedtest.csv
+speedtest.txt

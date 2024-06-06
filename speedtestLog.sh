@@ -1,5 +1,7 @@
 #!/bin/bash
 
+speedtest-cli >speedtest.txt
+
 # Extracting the Mbut/s from the speedtest txt file.
 
 CSV_FILE="log_speedtest.csv"
