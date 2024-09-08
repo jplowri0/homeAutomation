@@ -18,3 +18,5 @@ fi
 
 # Append the current date, time, and door state to the CSV file
 echo "$CURRENT_DATE,$CURRENT_TIME,$DOOR_STATE" >>"$CSV_FILE"
+
+mv log_office_door.csv logs/
